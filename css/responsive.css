@@ -1,4 +1,15 @@
 /* Responsive Styles */
+@media (max-width: 1200px) {
+    .service-details .container {
+        gap: 30px;
+    }
+    
+    .service-image img {
+        max-height: 400px;
+        object-fit: cover;
+    }
+}
+
 @media (max-width: 1024px) {
     .vision-mission .container {
         flex-direction: column;
@@ -7,6 +18,19 @@
     .vision, .mission {
         margin-bottom: 30px;
     }
+    
+    .service-details .container {
+        flex-direction: column;
+    }
+    
+    .service-image {
+        order: -1;
+        margin-bottom: 30px;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -14,6 +38,7 @@
         width: 95%;
     }
     
+    /* Navigation */
     nav ul {
         display: none;
         position: absolute;
@@ -33,6 +58,7 @@
     nav ul li {
         margin: 0;
         padding: 10px 20px;
+        text-align: center;
     }
     
     nav ul li a {
@@ -43,14 +69,21 @@
         display: block;
     }
     
-    .hero {
+    /* Hero Section */
+    .hero, .service-hero {
         padding: 150px 0 80px;
     }
     
-    .hero h2 {
+    .hero h2, .service-hero h1 {
         font-size: 2rem;
     }
     
+    /* Sections */
+    .section-description {
+        padding: 0 15px;
+    }
+    
+    /* Contact */
     .contact-container {
         flex-direction: column;
     }
@@ -58,26 +91,171 @@
     .contact-info {
         margin-top: 30px;
     }
-}
-
-@media (max-width: 480px) {
-    .hero h2 {
-        font-size: 1.8rem;
-    }
     
-    .hero p {
-        font-size: 1rem;
-    }
-    
-    .service-card, .blog-post, .job {
-        padding: 20px;
-    }
-    
+    /* Testimonials */
     .testimonial {
         padding: 30px 20px;
     }
     
+    /* FAQ */
+    .faq-question {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+    
+    /* Footer */
+    .footer-about {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+    
+    .footer-about .logo {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Header */
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+    
+    /* Hero */
+    .hero h2, .service-hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero p, .service-hero p {
+        font-size: 1rem;
+    }
+    
+    /* Services Grid */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Blog Grid */
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Job Openings */
+    .job-openings {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Testimonials */
+    .testimonial {
+        padding: 25px 15px;
+    }
+    
+    /* Chat Buttons */
+    .ai-chat-btn {
+        bottom: 90px;
+        right: 20px;
+    }
+    
+    .whatsapp-btn {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Typography */
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Hero */
+    .hero, .service-hero {
+        padding: 120px 0 60px;
+    }
+    
+    .hero h2, .service-hero h1 {
+        font-size: 1.6rem;
+    }
+    
+    /* Cards */
+    .service-card, .blog-post, .job {
+        padding: 20px;
+    }
+    
+    /* Footer */
     .footer-content {
         grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-links h4:after,
+    .footer-services h4:after,
+    .footer-contact h4:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-contact p {
+        justify-content: center;
+    }
+    
+    /* Chat Window */
+    .ai-chat-window {
+        width: 90%;
+        right: 5%;
+        bottom: 160px;
+        height: 400px;
+    }
+    
+    .ai-chat-btn, .whatsapp-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 375px) {
+    /* Header */
+    .logo img {
+        height: 40px;
+        margin-right: 10px;
+    }
+    
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+    
+    /* Hero */
+    .hero h2, .service-hero h1 {
+        font-size: 1.4rem;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Sections */
+    .vision-mission,
+    .services,
+    .blog,
+    .testimonials,
+    .careers,
+    .contact,
+    .faq {
+        padding: 60px 0;
+    }
+    
+    /* Service Cards */
+    .service-img {
+        height: 150px;
     }
 }
