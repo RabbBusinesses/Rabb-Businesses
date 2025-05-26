@@ -592,6 +592,235 @@ if ('IntersectionObserver' in window) {
             }
         });
     });
+// RABB Logo Section JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Enhanced particle system
+    function createAdditionalParticles() {
+        const particleContainer = document.querySelector('.rabb-logo-section .particles');
+        if (!particleContainer) return;
+        
+        // Create more particles dynamically
+        for (let i = 0; i < 5; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = -Math.random() * 10 + 's';
+            particle.style.animationDuration = (8 + Math.random() * 4) + 's';
+            particleContainer.appendChild(particle);
+        }
+    }
+    
+    // Logo container interaction effects
+    const logoContainer = document.querySelector('.logo-container');
+    if (logoContainer) {
+        
+        // Mouse enter effect
+        logoContainer.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-15px) scale(1.05)';
+            this.style.background = 'rgba(255, 255, 255, 0.15)';
+            
+            // Add temporary glow effect
+            this.style.boxShadow = `
+                0 40px 80px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 0 50px rgba(255, 255, 255, 0.2)
+            `;
+        });
+        
+        // Mouse leave effect
+        logoContainer.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.background = 'rgba(255, 255, 255, 0.1)';
+            this.style.boxShadow = `
+                0 25px 50px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2)
+            `;
+        });
+        
+        // Click effect
+        logoContainer.addEventListener('click', function() {
+            // Create ripple effect
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+                z-index: 1000;
+            `;
+            
+            this.appendChild(ripple);
+            
+            // Remove ripple after animation
+            setTimeout(() => {
+                if (ripple.parentNode) {
+                    ripple.parentNode.removeChild(ripple);
+                }
+            }, 600);
+        });
+    }
+    
+    // Airplane animation enhancement
+    const airplaneIcon = document.querySelector('.airplane-icon');
+    if (airplaneIcon) {
+        // Add random movement variations
+        setInterval(() => {
+            const randomX = (Math.random() - 0.5) * 20;
+            const randomY = (Math.random() - 0.5) * 10;
+            const randomRotate = (Math.random() - 0.5) * 10;
+            
+            airplaneIcon.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+            
+            setTimeout(() => {
+                airplaneIcon.style.transform = 'translate(0, 0) rotate(0deg)';
+            }, 1000);
+        }, 8000);
+    }
+    
+    // Parallax effect for particles
+    function handleParallax() {
+        const logoSection = document.querySelector('.rabb-logo-section');
+        if (!logoSection) return;
+        
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = logoSection.querySelectorAll('.particle');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.1 + (index % 3) * 0.05;
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+    }
+    
+    // Text animation on scroll
+    function handleTextAnimations() {
+        const mainBrand = document.querySelector('.main-brand');
+        const tagline = document.querySelector('.tagline');
+        
+        if (!mainBrand || !tagline) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Stagger the text animations
+                    setTimeout(() => {
+                        mainBrand.style.animation = 'slideInLeft 1s ease-out, glow 3s infinite alternate ease-in-out 1s';
+                    }, 200);
+                    
+                    setTimeout(() => {
+                        tagline.style.animation = 'fadeInUp 1s ease-out';
+                    }, 600);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.querySelector('.logo-container'));
+    }
+    
+    // Background gradient shift
+    function animateBackground() {
+        const logoSection = document.querySelector('.rabb-logo-section');
+        if (!logoSection) return;
+        
+        let hue = 250;
+        setInterval(() => {
+            hue = (hue + 1) % 360;
+            const gradient = `linear-gradient(135deg, hsl(${hue}, 70%, 65%) 0%, hsl(${(hue + 30) % 360}, 70%, 60%) 100%)`;
+            logoSection.style.background = gradient;
+        }, 100);
+    }
+    
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+            }
+        }
+        
+        .logo-container {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .particle {
+            transition: transform 0.1s ease-out;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Initialize all effects
+    createAdditionalParticles();
+    handleParallax();
+    handleTextAnimations();
+    
+    // Optional: Uncomment for animated background
+    // animateBackground();
+    
+    // Performance optimization
+    let ticking = false;
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateAnimations);
+            ticking = true;
+        }
+    }
+    
+    function updateAnimations() {
+        // Batch DOM updates here if needed
+        ticking = false;
+    }
+    
+    // Event listeners
+    window.addEventListener('scroll', requestTick);
+    window.addEventListener('resize', () => {
+        // Handle responsive adjustments
+        const logoSection = document.querySelector('.rabb-logo-section');
+        if (window.innerWidth <= 768 && logoSection) {
+            logoSection.style.height = '50vh';
+        }
+    });
+});
+
+// Export functions for external use
+window.RabbLogo = {
+    // Method to trigger logo animation
+    animate: function() {
+        const logoContainer = document.querySelector('.logo-container');
+        if (logoContainer) {
+            logoContainer.style.animation = 'pulse 0.6s ease-out';
+            setTimeout(() => {
+                logoContainer.style.animation = 'pulse 4s infinite ease-in-out';
+            }, 600);
+        }
+    },
+    
+    // Method to change logo colors
+    setTheme: function(primaryColor, secondaryColor) {
+        const logoSection = document.querySelector('.rabb-logo-section');
+        if (logoSection) {
+            logoSection.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+        }
+    }
+};
 
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
