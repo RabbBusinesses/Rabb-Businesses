@@ -1712,3 +1712,311 @@ body {
         right: 10px;
     }
 }
+/* RABB Logo Section Styles */
+.rabb-logo-section {
+    position: relative;
+    width: 50%;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: float 8s infinite ease-in-out;
+}
+
+.particle:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.8);
+    animation-duration: 10s;
+}
+
+.particle:nth-child(even) {
+    background: rgba(255, 255, 255, 0.4);
+    animation-duration: 12s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.logo-wrapper {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    animation: slideInLeft 1.5s ease-out;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.logo-container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 60px 40px;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    animation: pulse 4s infinite ease-in-out;
+}
+
+.logo-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 
+        0 35px 70px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.airplane-symbol {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.airplane-icon {
+    font-size: 4rem;
+    color: #ffffff;
+    animation: fly 6s infinite ease-in-out;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+    position: relative;
+    z-index: 2;
+}
+
+.airplane-trail {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: trail 6s infinite ease-in-out;
+    transform: translateY(-50%);
+}
+
+@keyframes fly {
+    0%, 100% {
+        transform: translateX(0) rotateZ(0deg);
+    }
+    25% {
+        transform: translateX(10px) rotateZ(5deg);
+    }
+    75% {
+        transform: translateX(-10px) rotateZ(-5deg);
+    }
+}
+
+@keyframes trail {
+    0%, 100% {
+        opacity: 0;
+        width: 0;
+    }
+    50% {
+        opacity: 1;
+        width: 100px;
+    }
+}
+
+.main-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 8px;
+    text-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 40px rgba(255, 255, 255, 0.3);
+    animation: glow 3s infinite alternate ease-in-out;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 
+            0 0 20px rgba(255, 255, 255, 0.5),
+            0 0 40px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        text-shadow: 
+            0 0 30px rgba(255, 255, 255, 0.8),
+            0 0 60px rgba(255, 255, 255, 0.5);
+    }
+}
+
+.divider {
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    margin: 20px auto;
+    border-radius: 2px;
+    animation: expand 2s infinite alternate ease-in-out;
+}
+
+@keyframes expand {
+    0% {
+        width: 80px;
+        opacity: 0.6;
+    }
+    100% {
+        width: 120px;
+        opacity: 1;
+    }
+}
+
+.tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0.9;
+    }
+}
+
+.pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulseRing 4s infinite ease-out;
+    pointer-events: none;
+}
+
+@keyframes pulseRing {
+    0% {
+        width: 300px;
+        height: 300px;
+        opacity: 1;
+    }
+    100% {
+        width: 600px;
+        height: 600px;
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .rabb-logo-section {
+        width: 100%;
+        height: 60vh;
+    }
+    
+    .main-brand {
+        font-size: 4rem;
+        letter-spacing: 6px;
+    }
+    
+    .airplane-icon {
+        font-size: 3rem;
+    }
+    
+    .logo-container {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-brand {
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+    }
+    
+    .airplane-icon {
+        font-size: 2.5rem;
+    }
+    
+    .logo-container {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-brand {
+        font-size: 2.5rem;
+        letter-spacing: 3px;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+    
+    .airplane-icon {
+        font-size: 2rem;
+    }
+}
