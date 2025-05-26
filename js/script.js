@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // WhatsApp Chat Button
 const whatsappBtn = document.createElement('a');
-whatsappBtn.href = "https://wa.me/971505696888"; // Replace with your WhatsApp number
+whatsappBtn.href = "https://wa.me/971 50 569 5888"; // Replace with your WhatsApp number
 whatsappBtn.className = "whatsapp-btn";
 whatsappBtn.target = "_blank";
 whatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
